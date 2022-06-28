@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>264830722631-d3d65df5dnd9n1s11ncc1jvcr9689kl9.apps.googleusercontent.com</string>
+	<string>203885756161-hahldrjbsktocttph2ico77fm541eb6k.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.264830722631-d3d65df5dnd9n1s11ncc1jvcr9689kl9</string>
+	<string>com.googleusercontent.apps.203885756161-hahldrjbsktocttph2ico77fm541eb6k</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>264830722631-c0fsdiv7r56974uhba85dm995hsn45no.apps.googleusercontent.com</string>
+	<string>203885756161-gukn7eb38topdqqaa0ir0k134stcbb6f.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD6zz6gZKBq9h5SlKDS6OQ6U9cYM8tTGjQ</string>
+	<string>AIzaSyDtgvy2tBZfR4SqlUkdpLHMgigJupT1Guw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>264830722631</string>
+	<string>203885756161</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.kzn.wutthmone</string>
+	<string>com.kzn.myachoo</string>
 	<key>PROJECT_ID</key>
-	<string>wutt-hmone</string>
+	<string>mya-choo-footwear</string>
 	<key>STORAGE_BUCKET</key>
-	<string>wutt-hmone.appspot.com</string>
+	<string>mya-choo-footwear.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:264830722631:ios:48549e1d40f6eeac534762</string>
+	<string>1:203885756161:ios:e81fdfce6a985174a02500</string>
 </dict>
 </plist>

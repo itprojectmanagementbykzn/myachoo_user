@@ -89,7 +89,6 @@ class ViewAllNormalProductWidget extends StatelessWidget {
                                                     padding: const EdgeInsets.only(
                                                       left: 5,
                                                       right: 5,
-                                                      bottom: 10,
                                                       top: 2,
                                                     ),
                                                     child: Text(
@@ -102,10 +101,8 @@ class ViewAllNormalProductWidget extends StatelessWidget {
                                                     ),
                                                   ),
                                                 ],
-                                              
-                                                                    ),
-                                            
-                                                                       ),
+                                          ),
+                                       ),
                                      ),
                                   ],
                                 ),

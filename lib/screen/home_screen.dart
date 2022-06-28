@@ -16,7 +16,7 @@ import 'view/profile.dart';
 List<Widget> _template = [
   HomeView(),
   Shop(),
-  HotView(),
+  // HotView(),
   // BrandView(),
   CartView(),
   FavouriteView(),

@@ -37,7 +37,7 @@ class _ManageItemState extends State<ManageItem> {
       backgroundColor: scaffoldBackground,
       appBar: AppBar(
         title: Text(
-          "DELUX BEAUTI",
+          "မြခြူး Mya Choo",
           style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,

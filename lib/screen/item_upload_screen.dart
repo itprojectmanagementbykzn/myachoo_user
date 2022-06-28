@@ -34,8 +34,8 @@ class _UploadItemState extends State<UploadItem> {
       backgroundColor: scaffoldBackground,
       appBar: AppBar(
         title: Text(
-          "DELUX BEAUTI",
-          style: TextStyle(color: Colors.black, fontSize: 14)),
+          "မြခြူး Mya Choo",
+          style: TextStyle(color: Colors.black, fontSize: 16)),
         actions: [
           // if (!(homecontroller.editItem.value == null)) ...[
           //   Padding(
@@ -234,22 +234,22 @@ class _UploadItemState extends State<UploadItem> {
               ),
             ),
             //Discount
-            Padding(
-              padding: EdgeInsets.only(
-                top: 20,
-                left: 20,
-                right: 20,
-              ),
-              child: TextFormField(
-                controller: controller.discountPriceController,
-                validator: (value) => controller.validator(value: value,isOptional: true),
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  hintText: 'အထူးလျော့ဈေး',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.only(
+            //     top: 20,
+            //     left: 20,
+            //     right: 20,
+            //   ),
+            //   child: TextFormField(
+            //     controller: controller.discountPriceController,
+            //     validator: (value) => controller.validator(value: value,isOptional: true),
+            //     keyboardType: TextInputType.number,
+            //     decoration: InputDecoration(
+            //       hintText: 'အထူးလျော့ဈေး',
+            //       border: OutlineInputBorder(),
+            //     ),
+            //   ),
+            // ),
             //Color
             Padding(
               padding: EdgeInsets.only(
@@ -301,22 +301,22 @@ class _UploadItemState extends State<UploadItem> {
                 ? sizePriceListWidget()
                 : const SizedBox(height: 0)),
             //Reward Point
-             Padding(
-              padding: EdgeInsets.only(
-                top: 20,
-                left: 20,
-                right: 20,
-              ),
-              child: TextFormField(
-                controller: controller.requirePointController,
-                validator: (value) => controller.validator(value: value,isOptional: true),
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  hintText: 'reward point',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ),
+            //  Padding(
+            //   padding: EdgeInsets.only(
+            //     top: 20,
+            //     left: 20,
+            //     right: 20,
+            //   ),
+            //   child: TextFormField(
+            //     controller: controller.requirePointController,
+            //     validator: (value) => controller.validator(value: value,isOptional: true),
+            //     keyboardType: TextInputType.number,
+            //     decoration: InputDecoration(
+            //       hintText: 'reward point',
+            //       border: OutlineInputBorder(),
+            //     ),
+            //   ),
+            // ),
             //Delivery Time
              Padding(
               padding: EdgeInsets.only(

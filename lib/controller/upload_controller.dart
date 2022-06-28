@@ -189,6 +189,7 @@ class UploadController extends GetxController {
                   category: _homeController.category.value,
                   tags: tagsMap.values.map((e) => e).toList(),
                   brandName: brandNameController.text,
+              deliveryTime: deliveryTimeController.text,
                 )
                 .toJson(),
           );
@@ -215,6 +216,7 @@ class UploadController extends GetxController {
                   tags: tagsMap.values.map((e) => e).toList(),
                   brandName: brandNameController.text,
                   dateTime: DateTime.now(),
+              deliveryTime: deliveryTimeController.text,
             ).toJson(),
           );
         }

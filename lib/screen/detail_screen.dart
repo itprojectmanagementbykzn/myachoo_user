@@ -28,7 +28,7 @@ class DetailScreen extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         title: Text(
-          currentProduct!.name,
+          currentProduct!.category,
           style: TextStyle(
               color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
         ),
@@ -49,23 +49,23 @@ class DetailScreen extends StatelessWidget {
                       imageUrl: currentProduct.photo1,
                       // "$baseUrl$itemUrl${currentProduct.photo}/get",
                       height: double.infinity,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fitWidth,
                     ),
                     CachedNetworkImage(
                       imageUrl: currentProduct.photo2,
                       // "$baseUrl$itemUrl${currentProduct.photo}/get",
                       height: double.infinity,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fitWidth,
                     ),
                     CachedNetworkImage(
                       imageUrl: currentProduct.photo3,
                       // "$baseUrl$itemUrl${currentProduct.photo}/get",
                       height: double.infinity,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fitWidth,
                     ),
                   ],
                   options: CarouselOptions(
-                    height: 400,
+                    height: 300,
                     viewportFraction: 0.8,
                     initialPage: 0,
                     enableInfiniteScroll: true,
@@ -106,17 +106,12 @@ class DetailScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       //Star
-                      Row(
-                        children: List.generate(
-                          5,
-                              (index) => Icon(
-                            Icons.star,
-                            size: 20,
-                            color: index <= (currentProduct.love ?? 0)
-                                ? homeIndicatorColor
-                                : Colors.grey,
-                          ),
-                        ),
+                      Text(
+                        currentProduct!.name,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16),
                       ),
                       //Favourite Icon
                       ValueListenableBuilder(
@@ -155,11 +150,37 @@ class DetailScreen extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "တစ်ထည်ဈေး (Retail) :",
+                      "အမှတ်တံဆိပ် (Brand)",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
+                    Text(
+                      currentProduct?.brandName??'',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
+                  ],
+                ),
+
+                SizedBox(
+                  height: 20,
+                ),
+
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "တစ်စည်ဈေး (WholeSale)",
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -175,39 +196,45 @@ class DetailScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Brand",
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                    ),
-                    Text(
-                      "Delevery Time",
-                      style: TextStyle(
-                          decoration: TextDecoration.lineThrough,
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                    ),
-                    Text(
-                      (currentProduct.discountPrice ?? 0) > 0 ?
-                      "${currentProduct.discountPrice} Kyats" : "no discount price",
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                    ),
-                  ],
-                ),
-                SizedBox(
                   height: 10,
                 ),
+
+
+
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Text(
+                //       "Discount",
+                //       style: TextStyle(
+                //           color: Colors.red,
+                //           fontWeight: FontWeight.bold,
+                //           fontSize: 16),
+                //     ),
+                //     Text(
+                //       "${currentProduct.price} Kyats",
+                //       style: TextStyle(
+                //           decoration: TextDecoration.lineThrough,
+                //           color: Colors.red,
+                //           fontWeight: FontWeight.bold,
+                //           fontSize: 16),
+                //     ),
+                //     Text(
+                //       (currentProduct.discountPrice ?? 0) > 0 ?
+                //       "${currentProduct.discountPrice} Kyats" : "no discount price",
+                //       style: TextStyle(
+                //           color: Colors.red,
+                //           fontWeight: FontWeight.bold,
+                //           fontSize: 16),
+                //     ),
+                //   ],
+                // ),
+                // SizedBox(
+                //   height: 10,
+                // ),
+
+
+
                 ExpandedWidget(
                   text: currentProduct.description,
                 ),
@@ -233,7 +260,7 @@ class DetailScreen extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            "Within 3 Days",
+                            currentProduct?.deliveryTime??'',
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -242,6 +269,11 @@ class DetailScreen extends StatelessWidget {
                           )
                         ],
                       ),
+
+                      SizedBox(
+                        width: 10,
+                      ),
+
                       Column(
                         children: [
                           Text(
@@ -265,6 +297,11 @@ class DetailScreen extends StatelessWidget {
                           )
                         ],
                       ),
+
+                      SizedBox(
+                        width: 10,
+                      ),
+
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -281,7 +318,7 @@ class DetailScreen extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            "     09 7777 0 222 8",
+                            "     09 265 700 006",
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -304,7 +341,7 @@ class DetailScreen extends StatelessWidget {
                         child: CachedNetworkImage(
                           imageUrl: currentProduct.photo2,
                           width: 150,
-                          height: 200,
+                          height: 150,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -323,7 +360,7 @@ class DetailScreen extends StatelessWidget {
                               child: CachedNetworkImage(
                                 imageUrl: currentProduct.photo3,
                                 width: 150,
-                                height: 200,
+                                height: 150,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -338,7 +375,7 @@ class DetailScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "🏠 Shop - 1  ( Thanlyin )",
+                      " 🏠 ဆိုင်လိပ်စာ",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -349,7 +386,7 @@ class DetailScreen extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      'အမှတ် 116 ၊ သတိပဌာန်လမ်း ၊ မြို့မတောင်ရပ်ကွက် ၊ သန်လျင်မြို့နယ် ၊ ရန်ကုန်မြို့။',
+                      'အမှတ် ၂၁၇ - ၂၃၆ ၊ ၂၉လမ်း အထက် ၊ ပန်းဘဲတန်းမြို့နယ်၊ ရန်ကုန်မြို့။',
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.black,
@@ -365,7 +402,7 @@ class DetailScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "🏠 Shop - 2  ( Dawbon )",
+                      "☎ ဆက်သွယ်နိုင်တဲ့ ဖုန်းနံပါတ်",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -376,7 +413,11 @@ class DetailScreen extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      'အမှတ် 192 ၊ ယမုံနာလမ်း ၊ ဇေယျာသီရိရပ်ကွက်, ဒေါပုံမြို့နယ် ။ (မာန်ပြေကားဂိတ်နားမရောက်ခင်...ဇေယျာသီရိ ၈ လမ်းထိပ်)',
+                      '''   09 265 700 006
+                      
+   09 796 700 006
+                      
+   09 952 700 006''',
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.black,

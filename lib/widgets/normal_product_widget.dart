@@ -55,10 +55,9 @@ class NormalProductWidget extends StatelessWidget {
                                           child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  product.brandName!.isNotEmpty ? 
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(5),
+                                                  product.brandName!.isNotEmpty ?
+                                  Padding(
+                                      padding: const EdgeInsets.all(0),
                                       child: Text(
                                         product.brandName ?? '',
                                         maxLines: 1,
@@ -68,11 +67,11 @@ class NormalProductWidget extends StatelessWidget {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                    ),
+
                                   ): const SizedBox(),
                                                   Expanded(
                                                     child: Padding(
-                                                      padding: const EdgeInsets.all(5),
+                                                      padding: const EdgeInsets.all(0),
                                                       child: Text(
                                                         product.name,
                                                         maxLines: 1,

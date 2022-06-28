@@ -146,7 +146,7 @@ class HomeView extends StatelessWidget {
                                 );
                               }else{
                                 //REWARD WIDGET
-                                return AspectRatio(aspectRatio: 16/13,
+                                return AspectRatio(aspectRatio: 1,
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 20),
                                   child: Column(

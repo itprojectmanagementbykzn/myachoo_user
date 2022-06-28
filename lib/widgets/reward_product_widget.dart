@@ -21,7 +21,7 @@ class RewardProductWidget extends StatelessWidget {
           },
           child: ConstrainedBox(
                   constraints: BoxConstraints(
-                    maxHeight: 100,
+                    maxHeight: 200,
                   ),
                   child:Card(
                    elevation: 5,
@@ -56,16 +56,17 @@ class RewardProductWidget extends StatelessWidget {
                                 children: [
                                   product.brandName!.isNotEmpty ? 
                                   Padding(
-                                    padding: const EdgeInsets.all(5),
-                                    child: Text(
-                                      product.brandName ?? '',
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
+                                      padding: const EdgeInsets.all(5),
+                                      child: Text(
+                                        product.brandName ?? '',
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                    ),
+
                                   ): const SizedBox(),
                                   Padding(
                                     padding: const EdgeInsets.all(5),

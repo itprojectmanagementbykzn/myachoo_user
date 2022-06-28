@@ -71,6 +71,31 @@ class BottomNav extends StatelessWidget {
                 ],
               ),
             ),
+            // Expanded(
+            //   child: Column(
+            //     children: [
+            //       IconButton(
+            //         onPressed: () {
+            //           controller.changeNav(2);
+            //         },
+            //         icon: Stack(
+            //           children: [
+            //             FaIcon(
+            //               FontAwesomeIcons.tag,
+            //               color: controller.navIndex.value == 2
+            //                   ? Colors.orangeAccent
+            //                   : Colors.grey,
+            //             ),
+            //           ],
+            //         ),
+            //       ),
+            //       Text("Offers",
+            //         style: TextStyle(
+            //           fontSize: 13,
+            //         ),),
+            //     ],
+            //   ),
+            // ),
             Expanded(
               child: Column(
                 children: [
@@ -81,33 +106,8 @@ class BottomNav extends StatelessWidget {
                     icon: Stack(
                       children: [
                         FaIcon(
-                          FontAwesomeIcons.tag,
-                          color: controller.navIndex.value == 2
-                              ? Colors.orangeAccent
-                              : Colors.grey,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Text("Offers",
-                    style: TextStyle(
-                      fontSize: 13,
-                    ),),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      controller.changeNav(3);
-                    },
-                    icon: Stack(
-                      children: [
-                        FaIcon(
                           FontAwesomeIcons.shoppingCart,
-                          color: controller.navIndex.value == 3
+                          color: controller.navIndex.value == 2
                               ? Colors.orangeAccent
                               : Colors.grey,
                         ),
@@ -135,11 +135,11 @@ class BottomNav extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      controller.changeNav(4);
+                      controller.changeNav(3);
                     },
                     icon: Icon(
                       FontAwesomeIcons.solidHeart,
-                      color: controller.navIndex.value == 4
+                      color: controller.navIndex.value == 3
                           ? Colors.orangeAccent
                           : Colors.grey,
                     ),
@@ -156,11 +156,11 @@ class BottomNav extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      controller.changeNav(5);
+                      controller.changeNav(4);
                     },
                     icon: FaIcon(
                       FontAwesomeIcons.user,
-                      color: controller.navIndex.value == 5
+                      color: controller.navIndex.value == 4
                           ? Colors.orangeAccent
                           : Colors.grey,
                     ),

@@ -154,71 +154,86 @@ class CartView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Padding(
+                    Obx(
+                                   () {
+                                    final hasError = controller.firstTimePressedCart.value && 
+                                    controller.townShipNameAndFee.isEmpty;
+                                    return Container(
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: hasError ? Colors.red : Colors.white.withOpacity(0),
+                                        ),
+                                      ),
+                            child:  Padding(
                       padding: const EdgeInsets.only(
                         top: 10,
                         left: 10,
                         right: 10,
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
 
-                          //DropDown TownShip List
-                          Container(
-                            width: 250,
-                            height: 50,
-                            child:
-                                GetBuilder<HomeController>(builder: (controller) {
-                              return InkWell(
-                                onTap: () {
-                                  //Show Dialog
-                                  showDialog(
-                                      barrierColor: Colors.white.withOpacity(0),
-                                      context: context,
-                                      builder: (context) {
-                                        return divisionDialogWidget();
-                                      });
-                                },
-                                child: Row(children: [
-                                  //Township Name
-                                  Expanded(
-                                    child: Text(
-                                      controller.townShipNameAndFee["townName"] ??
-                                          "မြို့နယ်",
-                                      maxLines: 1,
-                                      style: TextStyle(
-                                        fontSize: 13
-                                      ),
-                                    ),
+                                  //DropDown TownShip List
+                                  Container(
+                                    width: 250,
+                                    height: 50,
+                                    child:
+                                        GetBuilder<HomeController>(builder: (controller) {
+                                      return InkWell(
+                                        onTap: () {
+                                          //Show Dialog
+                                          showDialog(
+                                              barrierColor: Colors.white.withOpacity(0),
+                                              context: context,
+                                              builder: (context) {
+                                                return divisionDialogWidget();
+                                              });
+                                        },
+                                        child: Container(
+                                          child: Row(children: [
+                                            //Township Name
+                                            Expanded(
+                                              child: Text(
+                                                controller.townShipNameAndFee["townName"] ??
+                                                    "မြို့နယ်",
+                                                maxLines: 1,
+                                                style: TextStyle(
+                                                  fontSize: 13
+                                                ),
+                                              ),
+                                            ),
+                                            //DropDown Icon
+                                            Expanded(
+                                                child: Icon(FontAwesomeIcons.angleRight)),
+
+
+                                          ]),
+                                        ),
+                                      );
+                                    }),
                                   ),
-                                  //DropDown Icon
-                                  Expanded(
-                                      child: Icon(FontAwesomeIcons.angleRight)),
-
-
-                                ]),
-                              );
-                            }),
-                          ),
-                          GetBuilder<HomeController>(builder: (controller) {
-                            return Row(
-                              children: [
-                                Text(
-                                  controller.townShipNameAndFee.isEmpty
-                                      ? "0 ကျပ်"
-                                      : " ${controller.townShipNameAndFee["fee"]} ကျပ်",
-                                  style: TextStyle(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ],
-                            );
-                          }),
-                        ],
+                                  GetBuilder<HomeController>(builder: (controller) {
+                                    return Row(
+                                      children: [
+                                        Text(
+                                          controller.townShipNameAndFee.isEmpty
+                                              ? "0 ကျပ်"
+                                              : " ${controller.townShipNameAndFee["fee"]} ကျပ်",
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  }),
+                                ],
+                              ),
+                            ),
+                          );
+                        }
                       ),
-                    ),
                     Container(
                       width: double.infinity,
                       height: 40,
@@ -273,8 +288,7 @@ class CartView extends StatelessWidget {
                 foregroundColor: MaterialStateProperty.all(Colors.white),
               ),
               onPressed: () {
-                if ((controller.myCart.isNotEmpty &&
-                    !(controller.townShipNameAndFee.isEmpty))) {
+                if (controller.checkToAcceptOrder()) {
                   //TODO: SHOW DIALOG TO CHOOSE OPTION,THEN GO TO CHECKOUT
                   Get.defaultDialog(
                     backgroundColor: Colors.white70,
@@ -286,9 +300,7 @@ class CartView extends StatelessWidget {
                     confirm: nextButton(),
                   );
                   //Get.toNamed(checkOutScreen);
-                }  else {
-                  Get.snackbar('Error', "Cart is empty");
-                }
+                } 
               },
               child: Text("Order တင်ရန် နှိပ်ပါ",
               style: TextStyle(

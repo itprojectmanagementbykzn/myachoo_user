@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kozarni_ecome/controller/home_controller.dart';
 import 'package:kozarni_ecome/data/constant.dart';
@@ -13,46 +14,92 @@ class ProfileView extends StatelessWidget {
     return Obx(
       () => !(controller.currentUser.value == null)
           ? _LoginUser()
-          : ListView(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 50),
-                  child: Image.asset(
-                    "assets/logotr.png",
-                    height: 150,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-                  child: TextFormField(
-                    controller: controller.phoneState.value
-                        ? controller.verificationController
-                        : controller.phoneController,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: controller.phoneState.value
-                          ? 'Enter your code'
-                          : 'Phone Number(+959***)',
+          : LogoutUser(),
+    );
+  }
+}
+
+class LogoutUser extends StatelessWidget {
+  const LogoutUser({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final HomeController homeController = Get.find();
+    return Scaffold(
+      body: Stack(
+        children: [
+          Center(
+            child: Container(
+              color: Colors.transparent,
+              constraints: BoxConstraints(
+                maxWidth: 400.0,
+              ),
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                    child: Image.asset(
+                      "assets/logo.png",
+                      width: Get.width / 3,
                     ),
                   ),
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 50,
-                  margin: const EdgeInsets.only(top: 20, right: 20, left: 20),
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(homeIndicatorColor),
+                  /*Text(
+                    "Pos App",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
                     ),
-                    onPressed: controller.login,
-                    child: Text(
-                        controller.phoneState.value ? 'Verify' : 'Send Code'),
+                  ),*/
+                  SizedBox(
+                    height: 50.0,
                   ),
-                )
-              ],
+                  Container(
+                    width: Get.width - 100,
+                    child: InkWell(
+                      onTap: () => homeController.signInWithGoogle(),
+                      child: Card(
+                        color: homeIndicatorColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: homeIndicatorColor,
+                                radius: 12,
+                                child: Icon(
+                                  FontAwesomeIcons.google,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10.0,
+                              ),
+                              Text(
+                                "Sign in with Google",
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -115,7 +162,7 @@ class _LoginUser extends StatelessWidget {
               ),
             ),
           ),
-          _AdminPanel(),
+          
           Padding(
             padding: const EdgeInsets.only(top: 30, bottom: 20),
             child: Center(
@@ -132,6 +179,24 @@ class _LoginUser extends StatelessWidget {
               ),
             ),
           ),
+           //Delete
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.red,
+                  ),
+                  onPressed: () {
+                    _controller.deleteAccount();
+                  },
+                  child: Text("Delete Account",
+                      style: TextStyle(
+                        fontSize: 16,
+                        letterSpacing: 2,
+                        wordSpacing: 2,
+                        color: Colors.white,
+                      ))),
+            ),
         ],
       ),
     );

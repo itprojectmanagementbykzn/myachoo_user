@@ -107,7 +107,7 @@ class DetailScreen extends StatelessWidget {
                     children: [
                       //Star
                       Text(
-                        currentProduct!.name,
+                        currentProduct.name,
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -162,7 +162,7 @@ class DetailScreen extends StatelessWidget {
                           fontSize: 16),
                     ),
                     Text(
-                      currentProduct?.brandName??'',
+                      currentProduct.brandName??'',
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -260,7 +260,7 @@ class DetailScreen extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            currentProduct?.deliveryTime??'',
+                            currentProduct.deliveryTime??'',
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,

@@ -1,5 +1,9 @@
 import 'package:dio/dio.dart' as dio;
+import 'package:dio/dio.dart';
 import 'package:kozarni_ecome/data/constant.dart';
+
+import '../data/api.dart';
+import '../routes/routes.dart';
 
 class Api {
   final dio.Dio _dio = dio.Dio();
@@ -25,5 +29,28 @@ class Api {
     } catch (e) {
       print("file upload error is $e");
     }
+  }
+
+  
+  //Send Notificaiton After order uploaded
+  static Future<void> sendPush(String title, String message) async {
+    //final token = await FirebaseMessaging.instance.getToken();
+    final jsonBody = <String, dynamic>{
+      "notification": <String, dynamic>{
+        "title": title,
+        "body": message,
+      },
+      "data": <String, dynamic>{
+        "click_action": "FLUTTER_NOTIFICATION_CLICK",
+        "route": purchaseScreen,
+      },
+      "condition": "'order' in topics",
+    };
+    await Dio().post("https://fcm.googleapis.com/fcm/send",
+        data: jsonBody,
+        options: Options(headers: {
+          "Authorization": "key=$fcmKey",
+          "Content-Type": "application/json"
+        }));
   }
 }

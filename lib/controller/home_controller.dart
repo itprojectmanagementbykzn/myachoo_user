@@ -32,6 +32,7 @@ import '../model/hive_purchase_item.dart';
 import '../model/purchase_item.dart';
 import '../model/real_purchase.dart';
 import '../model/status.dart';
+import '../routes/routes.dart';
 
 class HomeController extends GetxController {
   final Auth _auth = Auth();
@@ -42,6 +43,24 @@ class HomeController extends GetxController {
 ///////////////////////////For View All Screen////////////////////////////////
 ViewAllModel viewAllModel = ViewAllModel.empty();
 RxMap<String,dynamic> myCartMap = <String,dynamic>{}.obs;
+
+var firstTimePressedCart = false.obs;
+ 
+ bool checkToAcceptOrder(){
+  
+  if(myCart.isEmpty){
+    Get.snackbar('Error', "Cart is empty");
+    return false;
+  }else if(townShipNameAndFee.isEmpty){
+    Get.snackbar('Error', "Need to choose a township");
+    firstTimePressedCart.value = true;
+    return false;
+  }else{
+    return true;
+  }
+ }
+
+
 void setViewAllProducts(ViewAllModel value){
     viewAllModel = value;
   }
@@ -695,7 +714,7 @@ void setViewAllProducts(ViewAllModel value){
             "because this user is completely new user.");
             currentUser.value = AuthUser(
               id: user.uid,
-              emailAddress: user.phoneNumber!,
+              emailAddress: user.email!,
               userName: user.displayName ?? "",
               image: user.photoURL ?? "",
               points: 0,
@@ -827,7 +846,7 @@ void setViewAllProducts(ViewAllModel value){
   }
   //-------------For Reward----------------------//
   
-  Future<void> signInWithGoogle(String redirectRouteUrl) async {
+  Future<void> signInWithGoogle() async {
     showLoading();
     try {
       // Trigger the authentication flow
@@ -846,7 +865,6 @@ void setViewAllProducts(ViewAllModel value){
       // Once signed in, return the UserCredential
       await FirebaseAuth.instance.signInWithCredential(credential);
       hideLoading();
-      Get.offNamed(redirectRouteUrl);
     } catch (e) {
       debugPrint("*******$e");
       hideLoading();
@@ -867,4 +885,23 @@ void setViewAllProducts(ViewAllModel value){
     return result;
   }
   //---------------------------------------------//
+   Future<void> deleteAccount() async{
+    showLoading();
+   await _database.delete(userCollection, path: currentUser.value!.id)
+    .then((value) async{
+      try {
+        await FirebaseAuth.instance.currentUser?.delete();
+      }on FirebaseAuthException catch (e){
+        if (e.code == "requires-recent-login") {
+          //TODO: WE NEED TO PROMPT TO REAUTHENTICATE,then delete() again
+          debugPrint("**********${e.code}");
+          return;
+        }
+        debugPrint("**********${e.code}");
+      }
+    });
+    hideLoading();
+    currentUser.value = null;
+    Get.offNamed(introScreen);
+  }
 }

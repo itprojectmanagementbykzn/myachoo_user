@@ -21,7 +21,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await FirebaseMessaging.instance.subscribeToTopic('order');
   await Hive.initFlutter();
   Hive.registerAdapter<HiveItem>(HiveItemAdapter());
   Hive.registerAdapter<HivePurchase>(HivePurchaseAdapter());
@@ -41,7 +40,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Future<void> selectNotification(String? payload) async {
+  /* Future<void> selectNotification(String? payload) async {
     await Get.toNamed(payload!);
     if (payload != null) {
       debugPrint('***********notification payload: $payload');
@@ -128,7 +127,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     setUpForegroundNotification();
   }
-
+ */
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
